@@ -17,10 +17,20 @@ while True:
     #print(compOption)
 
     while True:
+        print('''
+------------
+ R. Rock
+ P. Paper
+ S. Scissors
+ L. Lizard
+ SP. Spock
+------------
+ H. Help
+ Q. Quit''')
         userInput = input("\nSelect option: ")
         userOption = userInput.lower()
 
-        userInputOptions = ["rock", "paper", "scissors", "lizard", "spock", "r", "p", "s", "l", "sp", "q", "h"]
+        userInputOptions = ["rock", "paper", "scissors", "lizard", "spock", "quit", "help", "r", "p", "s", "l", "sp", "q", "h"]
 
         if userOption in userInputOptions:
             if userOption == "r" or userOption == "rock":
@@ -38,12 +48,14 @@ while True:
             continue
 
     if userOption == "q" or userOption == "quit":
-        print("\n> You won " + str(playerCount) + " times!")
-        print("\n> AI Sheldon won " + str(compCount) + " times!")
-
+        if playerCount > 0:
+            print("\n> You won " + str(playerCount) + " times!")
+        if compCount > 0:
+            print("\n> AI Sheldon won " + str(compCount) + " times!")
         print("Quitting...")
         isRunning = False
         break
+
     elif userOption == "h" or userOption == "help":
         print(
 '''
@@ -53,12 +65,12 @@ Rock crushes Lizard,
 Lizard poisons Spock, 
 Spock smashes Scissors, 
 Scissors decapitates Lizard, 
-Lizard eats paper, 
+Lizard eats Paper, 
 Paper disproves Spock, 
 Spock vaporizes Rock, 
 and as it always has, 
 Rock crushes Scissors.
-    - Sheldon L. Cooper, Big Bang Theory
+    - Sheldon L. Cooper, BBT
 ''')
         continue
     else:
@@ -103,4 +115,5 @@ Rock crushes Scissors.
         else:
             print("> You Lose!")
             compCount += 1
+        print("------------")
 
