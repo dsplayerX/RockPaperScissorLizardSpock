@@ -1,52 +1,106 @@
 import random
 from time import sleep
+from ascii_gestures import *
 
 # Sheldon's Infamous Rock-Paper-Scissors-Lizard-Spock Game
 
 options = ["Rock", "Paper", "Scissors", "Lizard", "Spock"]
+
+aiCount = 0
+playerCount = 0
 
 isRunning = True
 
 while True:
     rand_index = random.randrange(len(options))
     compOption = options[rand_index]
-
+    #print(compOption)
 
     while True:
         userInput = input("\nSelect option: ")
         userOption = userInput.lower()
 
-        if userOption in (i.lower() for i in options) or userOption == "q":
+        userInputOptions = ["rock", "paper", "scissors", "lizard", "spock", "r", "p", "s", "l", "sp", "q", "h"]
+
+        if userOption in userInputOptions:
+            if userOption == "r" or userOption == "rock":
+                userOption = "Rock"
+            if userOption == "p" or userOption == "paper":
+                userOption = "Paper"
+            if userOption == "s" or userOption == "scissors":
+                userOption = "Scissors"
+            if userOption == "l" or userOption == "lizard":
+                userOption = "Lizard"
+            if userOption == "sp" or userOption == "spock":
+                userOption = "Spock"
             break
         else:
             continue
 
-    if userInput == "q":
+    if userOption == "q" or userOption == "quit":
+        print("\n> You won " + str(playerCount) + " times!")
+        print("\n> AI Sheldon won " + str(aiCount) + " times!")
+
         print("Quitting...")
         isRunning = False
         break
+    elif userOption == "h" or userOption == "help":
+        print(
+'''
+Scissors cuts Paper, 
+Paper covers Rock, 
+Rock crushes Lizard, 
+Lizard poisons Spock, 
+Spock smashes Scissors, 
+Scissors decapitates Lizard, 
+Lizard eats paper, 
+Paper disproves Spock, 
+Spock vaporizes Rock, 
+and as it always has, 
+Rock crushes Scissors.
+    - Sheldon L. Cooper, Big Bang Theory
+''')
+        continue
     else:
-        print("# AI Sheldon selected " + compOption + ".")
+        print("\n# You picked " + userOption + ".")
+        printGesture(userOption)
+        print("\n# AI Sheldon selected " + compOption + ".")
+        printGesture(compOption)
 
-        if userOption == "scissors" and compOption == "Paper":
+
+        if userOption == "Scissors" and compOption == "Paper":
             print("> You Win!")
-        elif userOption == "paper" and compOption == "Rock":
+            playerCount += 1
+        elif userOption == "Paper" and compOption == "Rock":
             print("> You Win!")
-        elif userOption == "rock" and compOption == "Lizard":
+            playerCount += 1
+        elif userOption == "Rock" and compOption == "Lizard":
             print("> You Win!")
-        elif userOption == "lizard" and compOption == "Spock":
+            playerCount += 1
+        elif userOption == "Lizard" and compOption == "Spock":
             print("> You Win!")
-        elif userOption == "spock" and compOption == "Scissors":
+            playerCount += 1
+        elif (userOption == "Spock") and compOption == "Scissors":
             print("> You Win!")
-        elif userOption == "scissors" and compOption == "Lizard":
+            playerCount += 1
+        elif userOption == "Scissors" and compOption == "Lizard":
             print("> You Win!")
-        elif userOption == "lizard" and compOption == "Paper":
+            playerCount += 1
+        elif userOption == "Lizard" and compOption == "Paper":
             print("> You Win!")
-        elif userOption == "paper" and compOption == "Spock":
+            playerCount += 1
+        elif userOption == "Paper"  and compOption == "Spock":
             print("> You Win!")
-        elif userOption == "spock" and compOption == "Rock":
+            playerCount += 1
+        elif userOption == "Spock" and compOption == "Rock":
             print("> You Win!")
-        elif userOption == "rock" and compOption == "Scissors":
+            playerCount += 1
+        elif userOption == "Rock" and compOption == "Scissors":
             print("> You Win!")
+            playerCount += 1
+        elif userOption == compOption:
+            print("> Tie!")
         else:
             print("> You Lose!")
+            aiCount += 1
+
