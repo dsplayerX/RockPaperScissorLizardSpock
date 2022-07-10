@@ -6,7 +6,7 @@ from ascii_gestures import *
 
 options = ["Rock", "Paper", "Scissors", "Lizard", "Spock"]
 
-aiCount = 0
+compCount = 0
 playerCount = 0
 
 isRunning = True
@@ -39,7 +39,7 @@ while True:
 
     if userOption == "q" or userOption == "quit":
         print("\n> You won " + str(playerCount) + " times!")
-        print("\n> AI Sheldon won " + str(aiCount) + " times!")
+        print("\n> AI Sheldon won " + str(compCount) + " times!")
 
         print("Quitting...")
         isRunning = False
@@ -102,5 +102,5 @@ Rock crushes Scissors.
             print("> Tie!")
         else:
             print("> You Lose!")
-            aiCount += 1
+            compCount += 1
 
