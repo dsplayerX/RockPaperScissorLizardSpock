@@ -45,14 +45,16 @@ while True:
                 userOption = "Spock"
             break
         else:
+            print("\n> Wrong input! Try again!")
             continue
 
     if userOption == "q" or userOption == "quit":
-        if playerCount > 0:
-            print("\n> You won " + str(playerCount) + " times!")
-        if compCount > 0:
-            print("\n> AI Sheldon won " + str(compCount) + " times!")
-        print("Quitting...")
+        print("\n> You won " + str(playerCount) + " time(s)!")
+        sleep(1)
+        print("\n> AI Sheldon won " + str(compCount) + " time(s)!")
+        sleep(3)
+        print("\nQuitting...")
+        sleep(1)
         isRunning = False
         break
 
